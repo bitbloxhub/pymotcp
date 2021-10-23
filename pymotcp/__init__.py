@@ -5,7 +5,7 @@ __version__ = '0.1.0'
 def read(sock):
     lendat = b""
 
-    for _ in range(4):
+    while not len(lendat) == 4:
         lendattmp += sock.recv(1)
         if lendattmp: lendat += lendattmp
     
@@ -13,7 +13,7 @@ def read(sock):
 
     docdat = b""
 
-    for _ in range(length):
+    while not len(docdat) == length:
         docdattmp += sock.recv(1)
         if docdattmp: docdat += docdattmp
 
